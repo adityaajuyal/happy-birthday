@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Priyanshi 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .collage-page {
+      padding: 2rem 0;
+    }
+
+    .collage-heading {
+      font-family: 'Great Vibes', cursive;
+      text-align: center;
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(249, 83, 198, 0.7);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    /* Updated photo grid for 2 rows, 3 images per row */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+      border: 3px solid rgba(249, 83, 198, 0.5);
+      transform: rotate(0deg) scale(1);
+    }
+
+    /* First row slightly tilted */
+    .photo-grid .photo-wrapper:nth-child(1) img { transform: rotate(-2deg); }
+    .photo-grid .photo-wrapper:nth-child(2) img { transform: rotate(1deg); }
+    .photo-grid .photo-wrapper:nth-child(3) img { transform: rotate(-1deg); }
+    
+    /* Second row slightly tilted opposite direction */
+    .photo-grid .photo-wrapper:nth-child(4) img { transform: rotate(2deg); }
+    .photo-grid .photo-wrapper:nth-child(5) img { transform: rotate(-1deg); }
+    .photo-grid .photo-wrapper:nth-child(6) img { transform: rotate(1deg); }
+
+    .photo-grid img:hover {
+      transform: rotate(0deg) scale(1.05);
+      border-color: #f953c6;
+      box-shadow: 0 15px 35px rgba(249, 83, 198, 0.7);
+      z-index: 2;
+    }
+
+    .animated-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #f953c6;
+      transform: rotate(45deg);
+      bottom: -100px;
+      opacity: 0.6;
+      animation: floatUp 15s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #f953c6;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -15px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -15px;
+    }
+
+    .heart.red {
+      background-color: #ff5e7a;
+      width: 40px;
+      height: 40px;
+    }
+
+    .heart.red::before,
+    .heart.red::after {
+      width: 40px;
+      height: 40px;
+      background-color: #ff5e7a;
+    }
+
+    .heart.pink {
+      background-color: #f953c6;
+      width: 25px;
+      height: 25px;
+    }
+
+    .heart.pink::before,
+    .heart.pink::after {
+      width: 25px;
+      height: 25px;
+      background-color: #f953c6;
+    }
+
+    .heart.purple {
+      background-color: #b721ff;
+      width: 35px;
+      height: 35px;
+    }
+
+    .heart.purple::before,
+    .heart.purple::after {
+      width: 35px;
+      height: 35px;
+      background-color: #b721ff;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(45deg) scale(0.5);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.6;
+      }
+      80% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .star {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: transparent;
+      bottom: -100px;
+      opacity: 0;
+      animation: starFloat 12s linear infinite;
+    }
+
+    .star::before,
+    .star::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: #f5d300;
+    }
+
+    .star::before {
+      transform: rotate(45deg);
+    }
+
+    .star::after {
+      transform: rotate(90deg);
+    }
+
+    @keyframes starFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.2);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.8;
+        transform: translateY(50vh) rotate(180deg) scale(1);
+      }
+      100% {
+        transform: translateY(-20vh) rotate(360deg) scale(0.2);
+        opacity: 0;
+      }
+    }
+
+    .bubble {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      bottom: -100px;
+      opacity: 0;
+      animation: bubbleFloat 20s linear infinite;
+    }
+
+    @keyframes bubbleFloat {
+      0% {
+        transform: translateY(100vh) translateX(-10vw) scale(0.2);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.6;
+      }
+      80% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-20vh) translateX(10vw) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .gift-box-section {
+      text-align: center;
+      margin: 3rem 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .gift-box {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      padding: 1.2rem 2.5rem;
+      border: none;
+      background: linear-gradient(135deg, #f953c6, #b91d73);
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(185, 29, 115, 0.4);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: pulse 2s infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gift-box:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(249, 83, 198, 0.6);
+      background: linear-gradient(135deg, #b91d73, #f953c6);
+    }
+
+    .gift-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(45deg);
+      animation: shine 4s linear infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) rotate(45deg);
+      }
+      100% {
+        transform: translateX(100%) rotate(45deg);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      50% {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .poem-section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(20, 20, 40, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(249, 83, 198, 0.3);
+      position: relative;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .poem-section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .poem-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #f953c6;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .poem {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      white-space: pre-line;
+      color: #f0f0f0;
+      text-align: center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .collage-heading {
+        font-size: 3rem;
+      }
+      
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, auto);
+        gap: 15px;
+        padding: 15px;
+      }
+      
+      .photo-grid img {
+        height: 200px;
+      }
+      
+      .gift-box {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+      }
+      
+      .poem-title {
+        font-size: 2rem;
+      }
+      
+      .poem {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
+
+    /* For very small screens */
+    @media (max-width: 480px) {
+      .photo-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, auto);
+      }
+    }
+
+    /* Additional decorative elements */
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: white;
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f953c6, 0 0 40px #f953c6;
+      opacity: 0;
+      animation: sparkle 3s linear infinite;
+    }
+
+    @keyframes sparkle {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+    }
+
+    /* Added image wrapper for better visual separation */
+    .photo-wrapper {
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    /* Add a subtle glow on hover for each image */
+    .photo-wrapper:hover {
+      transform: translateY(-5px);
+    }
+    /* Elegant page transitions */
+body {
+  transition: opacity 0.3s ease;
+}
+
+body.transitioning {
+  overflow: hidden;
+}
+
+body.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(15, 12, 41, 0.95), rgba(48, 43, 99, 0.95), rgba(36, 36, 62, 0.95));
+  background-size: 300% 300%;
+  animation: gradientFlow 5s ease infinite;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.transition-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0s;
+}
+
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.transition-message {
+  position: relative;
+  color: #fff;
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 20;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.heart-divider {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.heart-divider:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #f953c6;
+  transform: rotate(45deg);
+  border-radius: 0 0 0 10px;
+  box-shadow: 0 0 15px rgba(249, 83, 198, 0.7);
+  animation: pulseHeart 1.5s ease infinite;
+}
+
+.heart-divider:after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes pulseHeart {
+  0%, 100% { transform: rotate(45deg) scale(1); }
+  50% { transform: rotate(45deg) scale(1.1); }
+}
+
+.transition-message.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.transition-message span {
+  display: block;
+  transform: translateY(15px);
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.transition-message span:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.transition-message span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating decorative elements */
+.floating-heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  animation: floatAndFade 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.floating-heart:before,
+.floating-heart:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.floating-heart:before {
+  top: -50%;
+  left: 0;
+}
+
+.floating-heart:after {
+  top: 0;
+  left: -50%;
+}
+
+.floating-heart.red {
+  background-color: #ff5e7a;
+  box-shadow: 0 0 12px rgba(255, 94, 122, 0.7);
+}
+
+.floating-heart.pink {
+  background-color: #f953c6;
+  box-shadow: 0 0 12px rgba(249, 83, 198, 0.7);
+}
+
+.floating-heart.purple {
+  background-color: #b721ff;
+  box-shadow: 0 0 12px rgba(183, 33, 255, 0.7);
+}
+
+@keyframes floatAndFade {
+  0% {
+    transform: translate(0, 0) rotate(45deg) scale(0.3);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(calc(var(--direction, 1) * 100px), -100px) rotate(45deg) scale(1);
+    opacity: 0;
+  }
+}
+
+.floating-star {
+  position: absolute;
+  background: #f5d300;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  opacity: 0;
+  box-shadow: 0 0 15px rgba(245, 211, 0, 0.7);
+  animation: starFloat 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+@keyframes starFloat {
+  0% {
+    transform: scale(0.2) rotate(0deg);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.floating-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  filter: blur(5px);
+  animation: glowFloat 1.5s ease forwards;
+}
+
+@keyframes glowFloat {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Magical effects for gift box button */
+.magic-pulse {
+  animation: magicPulse 1s ease;
+}
+
+@keyframes magicPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(249, 83, 198, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 25px 10px rgba(249, 83, 198, 0.9);
+    transform: scale(1.05);
+  }
+}
+
+.magic-effect {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: magicEffect 1s ease forwards;
+}
+
+.magic-sparkle {
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8);
+}
+
+.magic-heart {
+  background: #f953c6;
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: 0 0 12px rgba(249, 83, 198, 0.7);
+}
+
+.magic-heart:before,
+.magic-heart:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.magic-heart:before {
+  top: -50%;
+  left: 0;
+}
+
+.magic-heart:after {
+  top: 0;
+  left: -50%;
+}
+
+.magic-star {
+  background: #f5d300;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  box-shadow: 0 0 15px rgba(245, 211, 0, 0.7);
+}
+
+@keyframes magicEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(var(--dx, 0), var(--dy, -50px)) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Gradient animation */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Enhanced element animations */
+.profile-pic, .birthday-button, .collage-heading, .gift-box {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.profile-pic:hover, .birthday-button:hover, .gift-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Photo grid enhancements */
+.photo-wrapper {
+  transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  position: relative;
+}
+
+.photo-wrapper img {
+  transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.photo-wrapper:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.photo-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  box-shadow: inset 0 0 0 3px rgba(249, 83, 198, 0);
+  transition: all 0.4s ease;
+}
+
+.photo-wrapper:hover::after {
+  box-shadow: inset 0 0 0 3px rgba(249, 83, 198, 0.6);
+}
+
+/* Smooth background animation */
+body {
+  background-size: 400% 400%;
+  animation: backgroundFlow 20s ease infinite;
+}
+
+@keyframes backgroundFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f953c6, 0 0 20px #f953c6;
+      }
+      to {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f953c6, 0 0 40px #f953c6;
+      }
+    }
+  </style>
+</head>
+<body class="collage-page">
+  <h2 class="collage-heading">🎀 Priyanshi Negi 🎀</h2>
+
+  <!-- Photo Collage in 2 Rows, 3 Images per Row -->
+  <div class="photo-grid">
+    <!-- Row 1 -->
+    <div class="photo-wrapper">
+      <img src="Screenshot_20250329_005527_Photos (1).jpg" alt="Priyanshi 1">
+    </div>
+    <div class="photo-wrapper">
+      <img src="Screenshot_20240319_211741_Instander.jpg" alt="Priyanshi 2">
+    </div>
+    <div class="photo-wrapper">
+      <img src="Snapchat-792825814 (1) (1).jpg" alt="Priyanshi 3">
+    </div>
+    
+    <!-- Row 2 -->
+    <div class="photo-wrapper">
+      <img src="Snapchat-470717758~2.jpg" alt="Priyanshi 4">
+    </div>
+    <div class="photo-wrapper">
+      <img src="Screenshot_20250510_003002_Snapchat~2.jpg" alt="Priyanshi 5">
+    </div>
+    <div class="photo-wrapper">
+      <img src="Screenshot_20250510_030043_Gallery.jpg" alt="Priyanshi 6">
+    </div>
+  </div>
+  
+  <!-- Animated Background Elements -->
+  <div class="animated-background" id="animatedBg">
+    <!-- Hearts, stars, and bubbles will be added dynamically -->
+  </div>
+  
+  <!-- Gift Box Button -->
+  <div class="gift-box-section">
+    <button class="gift-box" onclick="revealPoem()">These were the only pictures I had of us together.</button>
+  </div>
+  
+  <!-- Hidden Poem -->
+  <div class="poem-section" id="poemSection">
+    <h3 class="poem-title">🌸 Khair 🌸</h3>
+    <p class="poem">
+14 aug 2019, meri story pe uska reply aaya tha,
+  Mahadev ki DP , tik tok ki clips se usne apna accpunt sajaya tha,
+  Kuch khaas tha nahi mera use,
+  Najaane kyu, usne mera saath nibhaya tha,
+  
+  Wo maathe pe teeka, or chashma aankhon pe rakhti hai,
+  Kadam rakhti hai jab mandir men, to shyaam b usko dekh k dhalti hai,
+  hari kurti or khule baal men wo bhagwaan ki aarti karti hai,
+  Kya likhu uski khoobsurati main, jab uski saheliya bhi usse jalti hai,
+  
+  Wo humesha ladne ke, bahaane khojti hai,
+  Roz roz wo apna nashta chhodti hai,
+  Waise to bhot, dara deti hai jab kam bolti hai,
+  Uska chehra, uski hoth , uski baatein , uski aankhen kaafi the,
+  Par fir wo apne baal kholti hai,
+  
+  Janti kuch nahi, fir bhi sab janti hai,
+  Chori k naam pe wo, bhagwaan se unka prashad baat ti hai ,
+  Logo se nafrat, khudko sabse aage manti hai,
+  Hisaab m fir bhi, har baar apne bhai se haarti hai,
+  
+  Aankhen chhoti hai uski, samaane ko poori duniya sakti hai,
+  Ki yun hee nahi meri nazre, roz uske deedar ko tarasri hai,
+  Wo aksar baaton men, apni dadi ko yaad karti hai,
+  Bhot kuch hai uske dil men, na jaane fir kisse naqaab krti hai,
+  
+  Wo zulfe kisi jangal si, or aankhen kisi noor si hai,
+  Ki har ada,  har khwahish , har bandish  mujhe uski manzoor si hai,
+  Tasweer kaafi hai uski , fir kyu mujhse mera haal poochti hai,
+  Zyada karti hai sbke liye, bas khudka khyaal bhoolti hai,
+  Ab to kuch yun hai ki,
+  Exams m bhi sar men uski awaaz goonjti hai,
+  
+  Negi Priyanshi, raat bhar snap pe mujhse baat karogi?
+  Kabhi mere sang momos khane chalogi?
+  Mein bulayu, or tum aaogi?
+  Kbhi mere sang shwarma roll khaogi?
+  Apni saari baaten, mujhse apne accent m kahogi?
+  Kitna ego ya detachment ho tum m, kya saath tum rahogi?
+
+                ~YOUR BIGGEST FAN~
+    </p>
+  </div>
+
+  <script>
+    // Generate animated background elements
+    const animatedBg = document.getElementById('animatedBg');
+    
+    // Generate various decorative elements
+    for (let i = 0; i < 20; i++) {
+      createHeart();
+    }
+    
+    for (let i = 0; i < 15; i++) {
+      createStar();
+    }
+    
+    for (let i = 0; i < 10; i++) {
+      createBubble();
+    }
+    
+    for (let i = 0; i < 40; i++) {
+      createSparkle();
+    }
+    
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      
+      // Randomize properties
+      const size = Math.random() * 20 + 10;
+      const posX = Math.random() * 100;
+      const delay = Math.random() * 10;
+      const duration = Math.random() * 10 + 15;
+      const heartType = Math.random();
+      
+      heart.style.width = `${size}px`;
+      heart.style.height = `${size}px`;
+      heart.style.left = `${posX}%`;
+      heart.style.animationDelay = `${delay}s`;
+      heart.style.animationDuration = `${duration}s`;
+      
+      if (heartType < 0.33) {
+        heart.classList.add('red');
+      } else if (heartType < 0.66) {
+        heart.classList.add('pink');
+      } else {
+        heart.classList.add('purple');
+      }
+      
+      animatedBg.appendChild(heart);
+    }
+    
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      
+      const size = Math.random() * 15 + 10;
+      const posX = Math.random() * 100;
+      const delay = Math.random() * 6;
+      const duration = Math.random() * 8 + 12;
+      
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${posX}%`;
+      star.style.animationDelay = `${delay}s`;
+      star.style.animationDuration = `${duration}s`;
+      
+      animatedBg.appendChild(star);
+    }
+    
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      
+      const size = Math.random() * 40 + 20;
+      const posX = Math.random() * 100;
+      const delay = Math.random() * 5;
+      const duration = Math.random() * 15 + 15;
+      
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${posX}%`;
+      bubble.style.animationDelay = `${delay}s`;
+      bubble.style.animationDuration = `${duration}s`;
+      
+      animatedBg.appendChild(bubble);
+    }
+    
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      const delay = Math.random() * 5;
+      
+      sparkle.style.left = `${posX}%`;
+      sparkle.style.top = `${posY}%`;
+      sparkle.style.animationDelay = `${delay}s`;
+      
+      animatedBg.appendChild(sparkle);
+    }
+    
+    // Function to reveal poem with animation
+    function revealPoem() {
+      const poemSection = document.getElementById('poemSection');
+      poemSection.style.display = 'block';
+      
+      // Force a reflow to enable transition
+      void poemSection.offsetWidth;
+      
+      poemSection.classList.add('active');
+      poemSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+      // Add more special effects when the poem is revealed
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          createHeart();
+          createStar();
+        }, i * 200);
+      }
+    }
+    
+    // Hide poem initially
+    document.addEventListener('DOMContentLoaded', function() {
+      const poemSection = document.getElementById('poemSection');
+      poemSection.style.display = 'none';
+    });
+  </script>
+  <script src="transition.js"></script>
+</body>
+</html>
